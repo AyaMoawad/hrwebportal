@@ -36,7 +36,10 @@ public class Employee {
 	private String email;
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade =  {CascadeType.PERSIST,
+						  CascadeType.MERGE,
+						  CascadeType.REFRESH,
+						  CascadeType.DETACH })
 	@JoinColumn(name = "hr_id")
 	private hr hr;
 	

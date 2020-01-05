@@ -11,8 +11,11 @@
 	<h1>WELCOME</h1>
 	<div id="container">
 		<div id="content">
-			<input type="button" value="Add Employee"
-				onclick="window.location.href='addEmployeeForm';return false;" />
+
+			<form:form action="addEmployeeForm" modelAttribute="user"
+				method="GET">
+				<input type="submit" value="Add Employee" />
+			</form:form>
 
 			<br> <br>
 			<!-- ADD THE TABLE -->
@@ -30,6 +33,16 @@
 						<td>${tempEmployee.firstName}</td>
 						<td>${tempEmployee.lastName}</td>
 						<td>${tempEmployee.email}</td>
+						<c:url var="updateLink" value="/employee/showFormForUpdate">
+							<c:param name="employeeId" value="${tempEmployee.id}"></c:param>
+						</c:url>
+						<td><a href="${updateLink}"> Update </a></td>
+						<c:url var="deleteLink" value="/employee/deleteEmployee">
+							<c:param name="employeeId" value="${tempEmployee.id}"></c:param>
+						</c:url>
+						<td><a href="${deleteLink}"
+							onclick="if(!(confirm('Are you sure you want to delete you account?'))) return false">
+								Delete </a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -44,7 +57,7 @@
 		DELETE MY ACCOUNT </a>
 	<br>
 	<br>
-	
+
 </body>
 
 

@@ -121,12 +121,19 @@ public class UserDAOImpl implements UserDAO {
 		// get the session
 		Session session = sessionFactory.getCurrentSession();
 		
+		//query to delete the employee by his id
+		//Query<Employee> query = session.createQuery("delete from employee e where e.emp_id =:empId");
+		//query.setParameter("empId", theid);
+		//query.executeUpdate();
+		
+		
+		
 		// get the employee using id
 		Employee employee = session.get(Employee.class, theid);
 		
 		//delete the employee
 		session.delete(employee);
-	
+		
 	}
 
 }

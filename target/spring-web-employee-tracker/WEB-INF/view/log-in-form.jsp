@@ -14,8 +14,7 @@
 		<h3>LOG IN :</h3>
 	
 		<form:form action="processForm" modelAttribute="user" method="GET">
-
-			
+	
 			<table>
 				<tbody>
 					<tr>

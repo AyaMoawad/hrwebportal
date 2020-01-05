@@ -40,7 +40,11 @@ public class hr {
 	private String password;
 	
 
-	@OneToMany(mappedBy = "hr",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "hr",cascade = {CascadeType.PERSIST,
+										  CascadeType.MERGE,
+										  CascadeType.REFRESH,
+										  CascadeType.DETACH },
+										  fetch = FetchType.EAGER)
 	private List<Employee> employees;
 	
 	public hr() {

@@ -95,8 +95,10 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/deleteEmployee")
-	public String deleteEmployee(@RequestParam("employeeId") int theid) {
+	public String deleteEmployee(@RequestParam("employeeId") int theid,Model model) {
 		userService.deleteEmployee(theid);
+		List<Employee> employees = userService.getEmployees(hrUser.getEmail());
+		model.addAttribute("employees", employees);
 		return"home";
 	}
 	
