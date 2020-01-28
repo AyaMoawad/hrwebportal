@@ -65,7 +65,7 @@ public class UserDAOImpl implements UserDAO {
 
 		// Add the employee to the HR then save him
 		theUser.addEmployee(theEmployee);
-		session.saveOrUpdate(theEmployee);
+		session.save(theEmployee);
 	}
 
 	@Override
@@ -112,7 +112,14 @@ public class UserDAOImpl implements UserDAO {
 		employee.setEmail(theEmployee.getEmail());
 		employee.setFirstName(theEmployee.getFirstName());
 		employee.setLastName(theEmployee.getLastName());
-		
+		employee.setCountry(theEmployee.getCountry());
+		employee.setPhoto(theEmployee.getPhoto());
+		employee.setAddress(theEmployee.getAddress());
+		employee.setDateOfBirth(theEmployee.getDateOfBirth());
+		employee.setDateOfHiring(theEmployee.getDateOfHiring());
+		employee.setJobTitle(theEmployee.getJobTitle());
+		employee.setJobDiscription(theEmployee.getJobDiscription());
+				
 		session.update(employee);
 	}
 

@@ -1,5 +1,8 @@
 package employeestracker.spring.entity;
 
+import java.util.Arrays;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +25,43 @@ public class Employee {
 	@Column(name = "emp_id")
 	private int id;
 	
+	@Column(name = "country")
+	private String country;
+	
+	@Column(name = "photo")
+	private byte[] photo;
+	
+	@Column(name= "jobdiscription")
+	private String jobDiscription;
+	
+	@Column(name = "jobtitle")
+	private String jobTitle;
+	
+	@Column(name="dateofbirth")
+	private String dateOfBirth;
+	
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getDateOfHiring() {
+		return dateOfHiring;
+	}
+
+	public void setDateOfHiring(String dateOfHiring) {
+		this.dateOfHiring = dateOfHiring;
+	}
+
+	@Column(name="dateofhiring")
+	private String dateOfHiring;
+	
+	@Column(name="address")
+	private String address;
+
 	@NotNull(message = "is required !")
 	@Size(min = 1 , max = 45, message = "is required !")
 	@Column(name = "first_name")
@@ -34,7 +74,6 @@ public class Employee {
 	@Size(min = 1 , max = 45, message = "is required !")
 	@Column(name = "email")
 	private String email;
-	
 	
 	@ManyToOne(cascade =  {CascadeType.PERSIST,
 						  CascadeType.MERGE,
@@ -93,9 +132,56 @@ public class Employee {
 		this.email = email;
 	}
 
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
-	}	
+		return "Employee [id=+" + id + ", country=" + country + ", photo=" + Arrays.toString(photo) + ", jobDiscription="
+				+ jobDiscription + ", jobTitle=" + jobTitle + ", dateOfBirth=" + dateOfBirth + ", dateOfHiring="
+				+ dateOfHiring + ", address=" + address + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", hr=" + hr + "]";
+	}
+
+	public String getJobDiscription() {
+		return jobDiscription;
+	}
+
+	public void setJobDiscription(String jobDiscription) {
+		this.jobDiscription = jobDiscription;
+	}
+
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	
+	
 	
 }

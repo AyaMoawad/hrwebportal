@@ -24,7 +24,7 @@ public class EmployeeController {
 
 	@Autowired
 	UserService userService;
-
+	
 	HrModel hrUser;
 	
 	int employeeId;
@@ -42,7 +42,20 @@ public class EmployeeController {
 		theModel.addAttribute("user", user);
 		return "signUp-form";
 	}
-
+	
+	/************************************************
+	@RequestMapping("/logOut")
+	public String logOutTheCurrentUser(@Valid @ModelAttribute("user") hr user,BindingResult result,Model theModel) {
+		if(result.hasErrors()) {
+			return "home";
+		}else{
+			theModel.addAttribute("user", user);
+			hrUser=new HrModel();
+			return "log-in-form";
+			}
+	}
+	************************************************/
+	
 	@GetMapping("/saveUser")
 	public String saveUser(@Valid @ModelAttribute("user") hr user, BindingResult result) {
 		if (result.hasErrors()) {
@@ -69,7 +82,6 @@ public class EmployeeController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
 		return "log-in-form";
 	}
@@ -80,6 +92,13 @@ public class EmployeeController {
 		this.employeeId = theId;
 		theModel.addAttribute("employee", theEmployee);
 		return "updateEmployee";
+	}
+	
+	@RequestMapping("/home")
+	public String home(Model model) {
+		List<Employee> employees = userService.getEmployees(hrUser.getEmail());
+		model.addAttribute("employees",employees);
+		return"home";
 	}
 	
 	@GetMapping("/updateEmployee")
