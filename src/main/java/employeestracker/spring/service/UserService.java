@@ -12,9 +12,10 @@ public interface UserService {
 	public hr getHr(String email);
 	public void addHr(hr myHr);
 	void deleteHr(String email);
-	public void addEmployees(Employee theEmployee,String email);
+	public boolean addEmployees(Employee theEmployee,String email);
 	public void addEmployees(Employee theEmployee,String email,int theId);
 	public List<Employee> getEmployees(String email);
 	Employee getEmployee(int theId);
 	public void deleteEmployee(int theid);
+	void calculateAndSetTotalSalary(String email);
 }

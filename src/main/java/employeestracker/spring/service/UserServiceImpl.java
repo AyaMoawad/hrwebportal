@@ -29,7 +29,20 @@ public class UserServiceImpl implements UserService {
 	public void addHr(hr myHr) {
 		userDAO.addHr(myHr);
 	}
-
+	
+	@Override
+	@Transactional
+	public void calculateAndSetTotalSalary(String email) {
+		int totalSalary=0;
+		List<Employee> employees= userDAO.getEmployees(email);
+		for(int i=0;i<employees.size();i++){
+			totalSalary += employees.get(i).getEmployeeSalary();
+		}
+		hr myhr =userDAO.getHr(email);
+		myhr.setTotalSalaryCost(totalSalary);
+		userDAO.addHr(myhr);
+	}
+	
 	@Override
 	@Transactional
 	public void deleteHr(String email) {
@@ -38,8 +51,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void addEmployees(Employee theEmployee, String email) {
-		userDAO.addEmployees(theEmployee, email);
+	public boolean addEmployees(Employee theEmployee, String email) {
+		boolean flag =userDAO.addEmployees(theEmployee, email);
+		return flag;
 	}
 
 	@Override

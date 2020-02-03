@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -35,6 +36,8 @@
 		</ul>
 	
 	</nav>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/homeScript.js">
+	</script>
 	<br>
 	<br>
 	<div
@@ -44,7 +47,7 @@
 		<form:form action="addEmployee" modelAttribute="employee" method="GET">
 
 			<div class="form-group">
-
+				
 				<label for="email">First Name:</label>
 				<form:input class="form-control" path="firstName" />
 				<form:errors path="firstName" class="text-danger" />
@@ -58,7 +61,15 @@
 				<label>Email:</label>
 				<form:input class="form-control" path="email" />
 				<form:errors path="email" class="text-danger" />
+				<c:if test="${not empty msg_failed}">
+                    <div class="errorblock text-danger">This mail is already added, try another! </div>
+                </c:if> 
 				<br> <br>
+				
+				<label>Salary:</label>
+				<form:input class="form-control empSalary" path="employeeSalary" />
+				<form:errors path="employeeSalary" class="text-danger" />
+				<br>
 				
 				<label>Country:</label>
 				<form:select class="form-control" path="country">
@@ -77,18 +88,19 @@
 				<form:errors path="jobTitle" class="text-danger" />
 				<br> <br>
 				
-				<label>Job discription:</label>
+				<label>Job description:</label>
 				<form:input class="form-control" path="jobDiscription" />
 				<form:errors path="jobDiscription" class="text-danger" />
 				<br> <br>
 				
 				<label>Date of birth:</label>
-				<form:input type="date" class="form-control" path="dateOfBirth" />
+				
+				<form:input  class="form-control" path="dateOfBirth" />
 				<form:errors path="dateOfBirth" class="text-danger" />
 				<br> <br>
 				
 				<label>Date of hiring:</label>
-				<form:input type="date" class="form-control" path="dateOfHiring" />
+				<form:input  class="form-control" path="dateOfHiring" />
 				<form:errors path="dateOfHiring" class="text-danger" />
 				<br> <br>
 				
@@ -98,9 +110,10 @@
 				<br> <br>
 				
 				<input type="submit"
-					class="btn btn-success btn-block "
+					class="btn btn-success btn-block addEmployee"
 					value="ADD EMPLOYEE" /> <br> <br>
 			</div>
+			
 		</form:form>
 	</div>
 

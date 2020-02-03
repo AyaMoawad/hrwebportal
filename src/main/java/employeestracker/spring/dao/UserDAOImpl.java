@@ -54,20 +54,28 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void addEmployees(Employee theEmployee, String email) {
+	public boolean addEmployees(Employee theEmployee, String email) {
 		// get the session
 		Session session = sessionFactory.getCurrentSession();
-
-		// get the user
-		Query<hr> theQuery = session.createQuery("from hr h where h.email =:email", hr.class);
-		theQuery.setParameter("email", email);
-		hr theUser = (hr) theQuery.getSingleResult();
-
-		// Add the employee to the HR then save him
-		theUser.addEmployee(theEmployee);
-		session.save(theEmployee);
+		try {
+			// get the user
+			Query<hr> theQuery = session.createQuery("from hr h where h.email =:email", hr.class);
+			theQuery.setParameter("email", email);
+			hr theUser = (hr) theQuery.getSingleResult();
+			
+			//DateFormat date=theEmployee.getDateOfBirth();
+			
+			// Add the employee to the HR then save him
+			theUser.addEmployee(theEmployee);
+			session.save(theEmployee);
+			return true;
+		}catch(Exception e) {
+			session.clear(); 
+			System.out.println("here!!");
+			return false;
+		}
 	}
-
+	
 	@Override
 	public List<Employee> getEmployees(String email) {
 		// get the session
@@ -119,7 +127,8 @@ public class UserDAOImpl implements UserDAO {
 		employee.setDateOfHiring(theEmployee.getDateOfHiring());
 		employee.setJobTitle(theEmployee.getJobTitle());
 		employee.setJobDiscription(theEmployee.getJobDiscription());
-				
+		employee.setEmployeeSalary(theEmployee.getEmployeeSalary());
+		
 		session.update(employee);
 	}
 

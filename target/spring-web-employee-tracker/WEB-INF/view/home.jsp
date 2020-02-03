@@ -61,13 +61,19 @@
 			</table>
 			</div>
 			<div class="table-responsive pre-scrollable">
-			<table class="table table-striped table-hover table-light">
+			    <table class="table table-striped table-hover table-light">
 				<!-- LOOP OVER THE EMPLOYEES -->
 				<c:forEach var="tempEmployee" items="${employees}">
-					<tr>
+				
+					<c:url var="profileLink" value="/employee/showEmployeeProfile">
+							<c:param name="employeeId" value="${tempEmployee.id}"></c:param>
+					</c:url>
+					<tr class='clickable-row allEmployees' data-href="${profileLink}" data-id="${tempEmployee.id}" data-salary="${tempEmployee.employeeSalary}">
+					    
 						<td class="text-center">${tempEmployee.firstName}</td>
 						<td class="text-center">${tempEmployee.lastName}</td>
 						<td class="text-center">${tempEmployee.email}</td>
+				
 						<c:url var="updateLink" value="/employee/showFormForUpdate">
 							<c:param name="employeeId" value="${tempEmployee.id}"></c:param>
 						</c:url>
@@ -80,7 +86,10 @@
 						<td class="text-center"><a href="${deleteLink}"
 							onclick="if(!(confirm('Are you sure you want to delete you account?'))) return false">
 								Delete </a></td>
-					</tr>
+						
+					</tr>				
+					
+					
 				</c:forEach>
 			</table>
 			</div>
@@ -93,7 +102,8 @@
 		DELETE MY ACCOUNT </a>
 	<br>
 	<br>
-
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/homeScript.js">
+	</script>
 </body>
 
 

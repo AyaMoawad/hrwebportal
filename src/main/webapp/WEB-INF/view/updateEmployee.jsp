@@ -23,6 +23,7 @@
 
 </head>
 <body>
+
 <nav class="navbar navbar-expand-sm bg-dark sticky-top">
 			<a class="navbar-brand" href="#">
 	   			 <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Logo" style="width:90px;">
@@ -42,6 +43,7 @@
 		<h3 class="text-info">UPDATE EMPLOYEE</h3>
 	
 		<form:form action="updateEmployee" modelAttribute="employee" method="GET">
+			
 			<div class="form-group">
 			
 			<label>First Name:</label>
@@ -59,6 +61,11 @@
 			<form:errors path="email" class="text-danger" />
 			<br> 
 			
+			<label>Salary:</label>
+			<form:input class="form-control empSalary" path="employeeSalary" />
+			<form:errors path="employeeSalary" class="text-danger" />
+			<br> 
+			
 			<label>Country:</label>
 		    <form:select class="form-control" path="country">
 			<option>Egypt</option>
@@ -71,8 +78,33 @@
 			<form:input type="file" class="form-control" path="photo" />
 			<br> 
 			
+			<label>Job title:</label>
+			<form:input class="form-control" path="jobTitle" />
+			<form:errors path="jobTitle" class="text-danger" />
+			<br> <br>
+				
+			<label>Job description:</label>
+			<form:input class="form-control" path="jobDiscription" />
+			<form:errors path="jobDiscription" class="text-danger" />
+			<br> <br>
+				
+			<label>Date of birth:</label>	
+			<form:input  class="form-control" path="dateOfBirth" />
+			<form:errors path="dateOfBirth" class="text-danger" />
+			<br> <br>
+				
+			<label>Date of hiring:</label>
+			<form:input  class="form-control" path="dateOfHiring" />
+			<form:errors path="dateOfHiring" class="text-danger" />
+			<br> <br>
+				
+			<label>Address:</label>
+			<form:input class="form-control" path="address" />
+			<form:errors path="address" class="text-danger" />
+			<br> <br>
+			
 			<label></label>
-			<input  class="form-control btn btn-success" type="submit" value="UPDATE" />
+			<input  class="form-control btn btn-success updateEmp" type="submit" value="UPDATE" />
 		
 		</div>
 		</form:form>

@@ -27,7 +27,18 @@ public class hr {
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
+	
+	@Column(name = "totalSalaryCost")
+	private int totalSalaryCost ;
+	
 
+	public int getTotalSalaryCost() {
+		return totalSalaryCost;
+	}
+
+	public void setTotalSalaryCost(int totalSalaryCost) {
+		this.totalSalaryCost = totalSalaryCost;
+	}
 
 	@NotNull(message = "is required !")
 	@Size(min = 1 , max = 45, message = "is required !")
@@ -54,6 +65,7 @@ public class hr {
 	public hr(String email, String password) {
 		this.email = email;
 		this.password = password;
+		this.totalSalaryCost = 0;
 	}
 
 	public int getId() {

@@ -10,7 +10,7 @@ public interface UserDAO {
 	public hr getHr(String email);
 	public void addHr(hr myHr);
 	void deleteHr(String email);
-	public void addEmployees(Employee theEmployee,String email);
+	public boolean addEmployees(Employee theEmployee,String email);
 	public List<Employee> getEmployees(String email);
 	public Employee getEmployee(int theId);
 	public void addEmployees(Employee theEmployee, String email, int theId);

@@ -1,6 +1,7 @@
 package employeestracker.spring.entity;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -12,14 +13,33 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
 @Table(name = "employee")
 public class Employee {
 	
+	@Column(name = "photoUrl")
+	private String photoUrl;
+	
+	@Column(name = "employeeSalary")
+	private int employeeSalary;
+	
+	
+	public int getEmployeeSalary() {
+		return employeeSalary;
+	}
+
+	public void setEmployeeSalary(int employeeSalary) {
+		this.employeeSalary = employeeSalary;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "emp_id")
@@ -37,27 +57,15 @@ public class Employee {
 	@Column(name = "jobtitle")
 	private String jobTitle;
 	
+	@DateTimeFormat(pattern = "yyyy/mm/dd")
+	@Temporal(TemporalType.DATE)
 	@Column(name="dateofbirth")
-	private String dateOfBirth;
-	
-	public String getDateOfBirth() {
-		return dateOfBirth;
-	}
+	private Date dateOfBirth;
 
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public String getDateOfHiring() {
-		return dateOfHiring;
-	}
-
-	public void setDateOfHiring(String dateOfHiring) {
-		this.dateOfHiring = dateOfHiring;
-	}
-
+	@DateTimeFormat(pattern = "yyyy/mm/dd")
+	@Temporal(TemporalType.DATE)
 	@Column(name="dateofhiring")
-	private String dateOfHiring;
+	private Date dateOfHiring;
 	
 	@Column(name="address")
 	private String address;
@@ -180,8 +188,33 @@ public class Employee {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
-	
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Date getDateOfHiring() {
+		return dateOfHiring;
+	}
+
+	public void setDateOfHiring(Date dateOfHiring) {
+		this.dateOfHiring = dateOfHiring;
+	}
+		
+
+	public String getPhotoUrl() {
+		String pu = Base64.getEncoder().encodeToString(getPhoto());
+        setPhotoUrl(pu);
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
 	
 }
