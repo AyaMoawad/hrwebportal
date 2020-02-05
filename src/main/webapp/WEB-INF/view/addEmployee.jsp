@@ -48,7 +48,7 @@
 		class="container-sm p-4 rounded-sm shadow-lg p-4 mb-4 bg-white" style="width:50%;">
 		<h3 class="text-success">ADD EMPLOYEE</h3>
 
-		<form:form  action="addEmployee" modelAttribute="employee" method="POST"
+		<form:form  action="addEmployee" modelAttribute="employee" method="GET"
 				enctype="multipart/form-data">
 
 			<div class="form-group">
