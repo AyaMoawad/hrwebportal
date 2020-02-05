@@ -18,7 +18,8 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/homeScript.js">
+	</script>
 <title>UPDATE EMPLOYEE</title>
 
 </head>
@@ -75,7 +76,7 @@
 			<br>
 			 
 			<label>Photo:</label>
-			<form:input type="file" class="form-control" path="photo" />
+			<form:input id="file" type="file" class="form-control" path="photo" />
 			<br> 
 			
 			<label>Job title:</label>
@@ -83,18 +84,18 @@
 			<form:errors path="jobTitle" class="text-danger" />
 			<br> <br>
 				
-			<label>Job discription:</label>
+			<label>Job description:</label>
 			<form:input class="form-control" path="jobDiscription" />
 			<form:errors path="jobDiscription" class="text-danger" />
 			<br> <br>
 				
 			<label>Date of birth:</label>	
-			<form:input type="date" class="form-control" path="dateOfBirth" />
+			<form:input  class="form-control" path="dateOfBirth" />
 			<form:errors path="dateOfBirth" class="text-danger" />
 			<br> <br>
 				
 			<label>Date of hiring:</label>
-			<form:input type="date" class="form-control" path="dateOfHiring" />
+			<form:input  class="form-control" path="dateOfHiring" />
 			<form:errors path="dateOfHiring" class="text-danger" />
 			<br> <br>
 				

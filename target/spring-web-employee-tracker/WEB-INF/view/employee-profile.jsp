@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta charset="utf-8"/>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -19,6 +22,9 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/homeScript.js">
+	</script>
 <title>EMPLOYEE PROFILE</title>
 
 </head>
@@ -38,7 +44,7 @@
 	</nav>
 	<br>
 	<br><br>
-
+	
 	<div class="container-sm p-4 rounded-sm shadow-lg p-4 mb-4 bg-white pre-scrollable">
 		<div class="card">
 			<div class="card-header">
@@ -81,8 +87,7 @@
 		</div>		
 	
 			</div>
-			<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/homeScript.js">
-			</script>
+			
 		<div class="container-sm p-4 rounded-sm shadow-lg p-4 mb-4 bg-white pre-scrollable">
 			<div class="row">
 				<div class="col-sm-4 text-center">

@@ -4,6 +4,8 @@
 <html>
 <head>
 
+<meta charset="utf-8"/>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -70,20 +72,20 @@
 					</c:url>
 					<tr class='clickable-row allEmployees' data-href="${profileLink}" data-id="${tempEmployee.id}" data-salary="${tempEmployee.employeeSalary}">
 					    
-						<td class="text-center">${tempEmployee.firstName}</td>
-						<td class="text-center">${tempEmployee.lastName}</td>
-						<td class="text-center">${tempEmployee.email}</td>
+						<td class="text-center tblRow">${tempEmployee.firstName}</td>
+						<td class="text-center tblRow">${tempEmployee.lastName}</td>
+						<td class="text-center tblRow">${tempEmployee.email}</td>
 				
 						<c:url var="updateLink" value="/employee/showFormForUpdate">
 							<c:param name="employeeId" value="${tempEmployee.id}"></c:param>
 						</c:url>
-						<td class="text-center"><a href="${updateLink}"> Update </a></td>
+						<td class="text-center tblRow"><a href="${updateLink}"> Update </a></td>
 						
 						<c:url var="deleteLink" value="/employee/deleteEmployee">
 							<c:param name="employeeId" value="${tempEmployee.id}"></c:param>
 						</c:url>
 						
-						<td class="text-center"><a href="${deleteLink}"
+						<td class="text-center tblRow"><a href="${deleteLink}"
 							onclick="if(!(confirm('Are you sure you want to delete you account?'))) return false">
 								Delete </a></td>
 						
@@ -94,7 +96,19 @@
 			</table>
 			</div>
 		</div>
-
+	<div class="container-sm p-4 rounded-sm shadow-lg p-4 mb-4 bg-white pre-scrollable">
+			<div class="row">
+				<div class="col-sm-4 text-center">
+					<h4 class="text-center">Total Number Of Employees:</h4>
+					<h4 class="text-center totalEmpNo"></h4>
+				</div>
+				<div class="col-sm-8 text-center">
+				<h4 class="text-center">Total Salary Cost:</h4>
+				<h4 class="text-center totalEmpSalary">"250000$"</h4>
+				</div>
+			</div>
+		
+		</div>
 	<br>
 	<br>
 	<br>

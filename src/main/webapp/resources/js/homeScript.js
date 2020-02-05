@@ -1,6 +1,6 @@
 //my IIFE front Controller
-
 var controller = (function(){
+
     jQuery(document).ready(function($) {
         $(".clickable-row").click(function() {
             window.location = $(this).data("href");
@@ -14,7 +14,36 @@ var controller = (function(){
             $(this).find(".tblRow").removeClass('bg-success');    
         });
 
-        //my ajax call to the backend controller
+
+        $(".addEmployee").click(function(){
+            var fd = new FormData();
+            var files = $('#file')[0].files[0];
+            fd.append('file',files);
+            console.log(fd);
+            $.ajax({
+                url:'fileUpload',
+                data: fd,
+                contentType: false,
+                processData: false,
+                type:'POST',
+                success: function(response){
+                    if(response.Status == 200){
+                        alert(response.SucessfulList);
+                    }else{
+                        alert('Error');
+                    }    
+                },				
+            });
+        });
+            
+
+        /***********************************************
+         * AJAX call to the backend controller to..
+         * (1) get the total no of employees,
+         * (2) get the total salary of all employees.
+         * Then;
+         * show them to the UI
+         ***********************************************/
         $.ajax({
             type: "GET",
             url: "getDataFromBackEndController",
@@ -27,7 +56,6 @@ var controller = (function(){
             }
         });
 
+        
     });
-   
 })();
-

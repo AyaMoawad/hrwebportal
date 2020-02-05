@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -115,25 +116,6 @@ public class EmployeeController {
 		return "employee-profile";
 	}
 	
-	@RequestMapping(value="/getDataFromBackEndController", method = RequestMethod.GET)
-	public @ResponseBody
-	String CheckAdapter(HttpServletRequest request, HttpSession session) {
-		Map<String,String> myMap = new HashMap<String, String>();
-		hr hr = userService.getHr(hrUser.getEmail());
-		Integer cost = hr.getTotalSalaryCost();
-		List<Employee> empList = hr.getEmployees();
-        myMap.put("totalSalary",cost.toString());
-        Integer listSize =empList.size();
-        myMap.put("totalNumberOfEmployees", listSize.toString());
-        ObjectMapper mapper = new ObjectMapper();
-        String json = "";
-        try {
-            json = mapper.writeValueAsString(myMap);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return json;
-	}
 	
 	@GetMapping("/updateEmployee")
 	public String updateEmployee(@Valid @ModelAttribute("employee") Employee theEmployee, BindingResult theBR ,Model model) {
@@ -208,5 +190,30 @@ public class EmployeeController {
 		}
 
 	}
+	
+	
+	
+	@RequestMapping(value="/getDataFromBackEndController", method = RequestMethod.GET)
+	public @ResponseBody
+	String CheckAdapter(HttpServletRequest request, HttpSession session) {
+		Map<String,String> myMap = new HashMap<String, String>();
+		hr hr = userService.getHr(hrUser.getEmail());
+		Integer cost = hr.getTotalSalaryCost();
+		List<Employee> empList = hr.getEmployees();
+        myMap.put("totalSalary",cost.toString());
+        Integer listSize =empList.size();
+        myMap.put("totalNumberOfEmployees", listSize.toString());
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+        try {
+            json = mapper.writeValueAsString(myMap);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return json;
+	}	
+	
+	
+	
 
 }

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8"/>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -19,6 +20,9 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/homeScript.js">
+	</script>	
 <title>ADD EMPLOYEE</title>
 
 </head>
@@ -44,7 +48,8 @@
 		class="container-sm p-4 rounded-sm shadow-lg p-4 mb-4 bg-white" style="width:50%;">
 		<h3 class="text-success">ADD EMPLOYEE</h3>
 
-		<form:form action="addEmployee" modelAttribute="employee" method="GET">
+		<form:form  action="addEmployee" modelAttribute="employee" method="POST"
+				enctype="multipart/form-data">
 
 			<div class="form-group">
 				
@@ -80,7 +85,7 @@
 				<br> <br> 
 				
 				<label>Photo:</label>
-				<form:input type ="file" class="form-control" path="photo" />
+				<form:input  id="file" type ="file" class="form-control" path="photo" />
 				<br> <br>
 				
 				<label>Job title:</label>
